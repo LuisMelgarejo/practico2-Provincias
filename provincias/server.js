@@ -41,7 +41,7 @@ app.route('/provincias')
  */
 .post(async function(req,res) {
     var idProvincia = await provincia.crearProvincia(req.body.id,req.body.name,req.body.enabled)
-
+//console.log(req.body)
      res.json({id: idProvincia})
 })
 
@@ -52,13 +52,18 @@ app.route('/provincias')
  * 
  * ejemplo {json} Mascota
 {
-    "id": "5cfffd3f4adca131b8d43f95"
+    "id": "5"
 }
  *
  */
 app.route('/provincia')
 .get(async function (req, res) {
     res.json(await provincia.getProvinciaById(req.body.id))
+})
+
+app.route('/borrarprovincia')
+.get(async function (req, res) {
+    res.json(await provincia.BorrarProvinciaById(req.body.id))
 })
 
 app.listen(3010, () => console.log("Server iniciado"))
